@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<link rel="stylesheet" type="text/css" href="libraries/buttons.css">
+		<link rel="stylesheet" type="text/css" href="images/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="libraries/hint.css">
+		<link rel="stylesheet" type="text/css" href="libraries/microtip.css">
+		<title>DREU Experience</title>
+		<meta name="name" content="content">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+		<!-- Scripts-->
+		<script type="text/javascript" src="libraries/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+			  $("#header").load("j_query/header.html"); 
+			  $("#footer").load("j_query/footer.html"); 
+			  $("#cards").load("j_query/cards.html");
+			});
+		</script>
+
+
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?LR-verbose&snipver=1&LiveTest=1"></' + 'script>')</script>
+		<script src="scripts/javascript.js"></script>
+	</head>
+	<body>
+		<img src="images/back.svg" alt="back_image" id="back_img">
+		<!-- Background Image -->
+		<div id="header"></div>
+
+		<section>
+			<div class="section_container">
+				<div class="content_section_comment">
+					<h2>This Blog</h2>
+					<p>The goal of this blog is to document all notable experiences that I have had at the 4 progress Laboratory in University of Michigan.</p>
+					<img src="images/DREU/progress_interns.jpeg" alt="All of the interns" style="width: 100%">
+				</div>
+			</div>
+			<div id="cards"></div>
+		</section>
+
+		<!-- FOOTER -->
+		<div id="footer"></div>
+	</body>
+</html>
+<!-- Things I want to fixed
+	- Responsiveness
+	- Padding of the <a> tag in the nav bar is hacked at .84em, make this automatic
+																					- Two div side by side in the content item doesn't work, destroys the webpage
+																					- Let border appear on the left of content item without moving content inside
+	-->

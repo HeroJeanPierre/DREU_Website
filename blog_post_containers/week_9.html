@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="/index.css">
+		<link rel="stylesheet" href="/libraries/buttons.css">
+		<link rel="stylesheet" href="/images/font-awesome.min.css">
+		<link rel="stylesheet" href="/libraries/hint.css">
+		<link rel="stylesheet" href="/libraries/microtip.css">
+		<title>DREU Experience</title>
+		<meta name="name" content="content">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Scripts-->
+		<script type="text/javascript" src="/libraries/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+			$("#header").load("/j_query/header.html");
+			$("#footer").load("/j_query/footer.html");
+			$("#cards").load("/j_query/cards.html");
+
+			// Blog
+			$("#blog_post_9").load("/blog_posts/blog_post_9.html");
+			});
+		</script>
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?LR-verbose&snipver=1&LiveTest=1"></' + 'script>')</script>
+	</head>
+	<body>
+		<!-- Background Image -->
+		<img src="/images/back.svg" alt="back_image" id="back_img">
+		
+		<!-- HEADER -->
+		<div id="header"></div>
+		<section>
+		
+		<!-- BLOG POST -->
+		<div id="blog_post_9"></div>
+
+			<!-- CARDS -->
+			<div id="cards"></div>
+		</section>
+
+		<!-- FOOTER -->
+		<div id="footer"></div>
+	</body>
+</html>
+<!-- Things I want to fixed
+	- Responsiveness
+	- Padding of the <a> tag in the nav bar is hacked at .84em, make this automatic
+																											- Two div side by side in the content item doesn't work, destroys the webpage
+																											- Let border appear on the left of content item without moving content inside
+	-->
