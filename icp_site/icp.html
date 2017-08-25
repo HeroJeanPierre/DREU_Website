@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="javascript.css">
+		<link rel="stylesheet" type="text/css" href="libraries/buttons.css">
+		<link rel="stylesheet" type="text/css" href="images/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="libraries/hint.css">
+		<title>ICP Page</title>
+		<meta name="name" content="content">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- SCRIPTS -->
+		<script src="libraries/three.js"></script>
+	</head>
+	<body>
+		<img src="images/back.svg" alt="back_image" id="back_img">
+		<!-- Background Image -->
+		<header id="header" class="row">
+			<!-- 1st Torus -->
+<!-- 			<canvas id="header_canvas_1" style="position: relative; top: .4em; right: 1em"></canvas>
+			<script src="scripts/header_cube_1.js"></script>
+ -->			<!-- TITLE -->
+			<h1 style="margin-bottom: .2em;">ICP Page</h1>
+			<!-- 2nd Torus -->
+<!-- 			<canvas id="header_canvas_2" style="position: relative; top: .4em;left: 1em"></canvas>
+			<script src="scripts/header_cube_2.js"></script>
+ -->			<p style="margin: .2em 0em 1em 0em; font-size: 70%;" ><a href="www.github.com/herojeanpierre">
+				<span class="hint--right hint--bounce" aria-label="My github">By: Julien Jean-Pierre</span>
+			</a></p>
+		</header>
+
+		<section>
+			<div class="section_container">
+				<div class="content_section_comment">
+					<h2>Overview</h2>	
+					<p>This will be a tour of my understanding of Iterative closest point.</p>
+				</div>
+			</div>
+			<div class="section_container" id="content_section_reset">
+				<div class="section_content_item col-12">
+					<h2>Framework</h2>
+
+					<div class="example">
+						<h3>ICP</h3>
+						<p>NOTE: The top left side is the origin, and y increases downward.</p>
+						<script src="libraries/numeric-1.2.6.js" type="text/javascript"></script>
+						<script src="libraries/p5.js" type="text/javascript"></script>
+						<script src="icp.js" type="text/javascript"></script>
+						<button onclick="finalize();" style="margin-bottom: 2em">Finalize Points</button>
+						<button onclick="rotateOn();" style="margin-bottom: 2em">Begin rotation</button>
+						<p>X range</p>
+						<input type="range" id="xRange" value="0" max="100" min="-100">
+
+						<p>Y range</p>
+						<input type="range" id="yRange" value="0" max="100" min="-100">
+						<br>
+						<button onclick="runICPSwitch();"v style="margin-bottom: 2em; margin-top:1em">Show Nearest Neighbors</button>
+						<button onclick="showNearest();"v style="margin-bottom: 2em; margin-top:1em">Show Original Points</button>
+						<button onclick="showICP();"v style="margin-bottom: 2em; margin-top:1em">Predict</button>
+						<p id="rotation"></p>
+						<p id="translation"></p>
+						<div id="icp_canvas_1"></div>		
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			
+			<div class="footer_container" id="foot">
+				<p>&copy 2017 Julien Jean-Pierre</p>
+			</div>
+		</footer>
+	</body>
+</html>

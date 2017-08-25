@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="javascript.css">
+		<link rel="stylesheet" type="text/css" href="libraries/buttons.css">
+		<link rel="stylesheet" type="text/css" href="images/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="libraries/hint.css">
+		<title>JavaScript Page</title>
+		<meta name="name" content="content">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- SCRIPTS -->
+		<script src="libraries/three.js"></script>
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?LR-verbose&snipver=1&LiveTest=1"></' + 'script>')</script>
+	</head>
+	<body>
+		<img src="images/back.svg" alt="back_image" id="back_img">
+		<!-- Background Image -->
+		<header id="header" class="row">
+			<!-- 1st Torus -->
+			<canvas id="header_canvas_1" style="position: relative; top: .4em; right: 1em"></canvas>
+			<script src="scripts/header_cube_1.js"></script>
+			<!-- TITLE -->
+			<h1 style="margin-bottom: .2em;">Three.js Example Page</h1>
+			<!-- 2nd Torus -->
+			<canvas id="header_canvas_2" style="position: relative; top: .4em;left: 1em"></canvas>
+			<script src="scripts/header_cube_2.js"></script>
+			<p style="margin: .2em 0em 1em 0em; font-size: 70%;" ><a href="www.github.com/herojeanpierre">
+				<span class="hint--right hint--bounce" aria-label="My github">By: Julien Jean-Pierre</span>
+			</a></p>
+		</header>
+		<nav class="">
+			<ul>
+				<li><a href="#Self" title="">Three.js</a></li>
+				<li><a href="#foot" title="">ICP</a></li>
+				<li><a href="#GICP" title="">GICP</a></li>
+			</ul>
+		</nav>
+		<section>
+			<div class="section_container">
+				<div class="content_section_comment">
+					<h2>Overview</h2>
+					<p>This will be a tour of my understanding of three.js</p>
+				</div>
+			</div>
+			<div class="section_container" id="content_section_reset">
+				<div class="section_content_item col-12">
+					<h2>Output</h2>
+					<h3><span class="hint--right hint--bounce" aria-label="Code for the cube.">Code</span></h3>
+					<code>
+					//RENDERER<br>
+					var renderer = new THREE.WebGLRenderer({<br>
+					canvas: document.getElementById("canvas_1"),<br>
+					antialias: true,<br>
+					alpha: true<br>
+					});<br>
+					<br>
+					// renderer.setClearColor(0x000000, 0);<br>
+					renderer.setPixelRatio(window.devicePixelRatio);<br>
+					renderer.setSize(500, 300);<br>
+					<br>
+					//CAMERA<br>
+					// THREE.PerspectiveCamera( fov, aspect, near, far );<br>
+					var camera = new THREE.PerspectiveCamera(<br>
+					35,<br>
+					window.innerWidth / window.innerHeight,<br>
+					0.1,<br>
+					5000<br>
+					);<br>
+					<br>
+					//SCENE<br>
+					var scene = new THREE.Scene();<br>
+					<br>
+					//LIGHTS<br>
+					<br>
+					var light = new THREE.AmbientLight(0xffffff, 0.5);<br>
+					scene.add(light);<br>
+					<br>
+					var light1 = new THREE.PointLight(0xffffff, 0.5);<br>
+					scene.add(light1);<br>
+					<br>
+					//OBJECT<br>
+					var geometry = new THREE.CubeGeometry(300, 300, 300);<br>
+					var material = new THREE.MeshLambertMaterial({ color: 0xcccccc });<br>
+					var mesh = new THREE.Mesh(geometry, material);<br>
+					<br>
+					/*It is important to */<br>
+					mesh.position.set(0, 0, -1000);<br>
+					scene.add(mesh);<br>
+					<br>
+					//RENDER LOOP<br>
+					requestAnimationFrame(render);<br>
+					function render() {<br>
+					mesh.rotation.x += 0.01;<br>
+					mesh.rotation.y += 0.01;<br>
+					renderer.render(scene, camera);<br>
+					requestAnimationFrame(render);<br>
+					}<br>
+					</code>
+					<div class="example">
+						<h3>Cube</h3>
+						<p>So the first thing that I am going to do is create a cube.</p>
+						<canvas id="canvas_1"></canvas>
+						<script src="scripts/Cube/cube_1.js"></script>
+						<ul>
+							<li>Create WebGLRenderer</li>
+							<li>Create Camera</li>
+							<li>Create Scene</li>
+							<li>Create Lights (+Add to scene)</li>
+							<li>Create Object Geometry</li>
+							<li>Create Object Material</li>
+							<li>Create Object Mesh (Adjust mesh position, +Add to scene)</li>
+							<li>Animate</li>
+						</ul>
+					</div>
+					<div class="example">
+						<h3>Sphere</h3>
+						<p>The same principle can be applied to many types of objects.</p>
+						<canvas id="canvas_2"></canvas>
+						<script src="scripts/Cube/sphere_1.js"></script>
+					</div>
+					<div class="example">
+						<h3>Other Objects</h3>
+						<canvas id="canvas_3"></canvas>
+						<script src="scripts/Cube/object_1.js"></script>
+					</div>
+				</div>
+			</div>
+			<!-- 			<div class="section_container">
+				<div class="content_section_comment">
+					<h2>More Geometry</h2>
+					<p>This is just a little note that there are plenty of geometry that I could have shown but didn't to reduce repetitiveness.</p>
+					<ul>
+									<li>Panes</li>
+									<li>Tubes</li>
+									<li>Point Models</li>
+									<li>Text Shapes</li>
+					</ul>
+				</div>
+			</div>
+			-->
+			<div class="section_container">
+				<div class="section_content_item col-12">
+					<h2>Geometry</h2>
+					<p>There are a lot of primitive in thee.js that allow you to basically make whatever you like. Note that buffer Geometry is optimized to run faster, but is less dynamic </p>
+					<div class="example">
+						<h3>Triangle From Vectors</h3>
+						<p>These are made from vectors</p>
+						<code>
+						//OBJECT 1 (Left)<br>
+						var geometry_3_1 = new THREE.BufferGeometry();<br>
+						var vertices_3_1 = new Float32Array([-200, 200, 0, -200, -200, 0, 200, 0, 0]);<br>
+						<br>
+						geometry_3_1.addAttribute(<br>
+						"position",<br>
+						new THREE.BufferAttribute(vertices_3_1, 3)<br>
+						);<br>
+						<br>
+						var material_3_1 = new THREE.MeshLambertMaterial({ color: 0xff0000 });<br>
+						<b>material_3_1.side = THREE.DoubleSide;</b><br>
+						var mesh_3_1 = new THREE.Mesh(geometry_3_1, material_3_1);<br>
+						<br>
+						mesh_3_1.position.set(-250, 0, -1000);<br>
+						scene_3.add(mesh_3_1);<br>
+						<br>
+						// OBJECT 2 (Right)<br>
+						var geometry_3 = new THREE.Geometry();<br>
+						geometry_3.vertices.push(<br>
+						new THREE.Vector3(-200, 200, 0),<br>
+						new THREE.Vector3(-200, -200, 0),<br>
+						new THREE.Vector3(200, 0, 0)<br>
+						);<br>
+						geometry_3.faces.push(new THREE.Face3(0, 1, 2));<br>
+						<br>
+						var material_3 = new THREE.MeshLambertMaterial();<br>
+						<b>		material_3.side = THREE.DoubleSide;</b><br>
+						<br>
+						var mesh_3 = new THREE.Mesh(geometry_3, material_3);<br>
+						mesh_3.position.set(250, 0, -1000);<br>
+						scene_3.add(mesh_3);<br>
+						</code>
+						<canvas id="canvas_4"></canvas>
+						<script src="scripts/Geometry/geometry_1.js"></script>
+					</div>
+					<div class="example">
+						<h3>Squares &amp Circles</h3>
+						<code>
+						//Object 1<br>
+						var geometry_4 = new THREE.PlaneGeometry(200, 200);<br>
+						<br>
+						//Object 2<br>
+						var geometry_4_1 = new THREE.BoxGeometry(200, 200, 200);<br>
+						</code>
+						<canvas id="canvas_5"></canvas>
+						<script src="scripts/Geometry/geometry_2.js"></script>
+					</div>
+					<div class="example">
+						<h3>Other Objects</h3>
+						<code>
+						//Object 1<br>
+						var geometry_4 = new THREE.PlaneGeometry(200, 200);<br>
+						<br>
+						//Object 2<br>
+						var geometry_4_1 = new THREE.BoxGeometry(200, 200, 200);<br>
+						</code>
+						<canvas id="canvas_6"></canvas>
+						<script src="scripts/Geometry/geometry_3.js"></script>
+					</div>
+					<div class="example">
+						<h3>Parametric</h3>
+						<code>
+						var paraFunc_6_1 = function(u, v) {<br>
+						var x = -100 + 200 * u;<br>
+						var y = 50 + 200 * v;<br>
+						var z = Math.cos(u * Math.PI) + Math.cos(v * Math.PI) * -100;<br>
+						<br>
+						return new THREE.Vector3(x, y, z);<br>
+						};<br>
+						<br>
+						var geometry_6_1 = new THREE.ParametricGeometry(paraFunc_6_1, 10, 10);<br>
+						</code>
+						<canvas id="canvas_7"></canvas>
+						<script src="scripts/Geometry/geometry_4.js"></script>
+					</div>
+					<div class="example">
+						<h3>Tubes</h3>
+						<p>These are important because they can be used to model 3D equations.</p>
+						<code>
+						//OBJECT 1<br>
+						var curve_7 = new THREE.SplineCurve3([<br>
+						new THREE.Vector3(0, 0, 0),<br>
+						new THREE.Vector3(400, 0, 0),<br>
+						new THREE.Vector3(400, 400, 0),<br>
+						new THREE.Vector3(400, 400, 400),<br>
+						new THREE.Vector3(400, 800, 400),<br>
+						new THREE.Vector3(800, 800, 400),<br>
+						new THREE.Vector3(800, 800, 800)<br>
+						// new THREE.Vector3(0, 0, 0)<br>
+						]);<br>
+						<br>
+						var geometry_7 = new THREE.TubeGeometry(curve_7, 20, 50, 40, false);<br>
+						</code>
+						<canvas id="canvas_8"></canvas>
+						<script src="scripts/Geometry/geometry_5.js"></script>
+					</div>
+					<div class="example">
+						<h3>Accessing Vertices of Object</h3>
+						<canvas id="canvas_9"></canvas>
+						<script src="scripts/Geometry/geometry_6.js"></script>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			
+			<div class="footer_container" id="foot">
+				<p>&copy 2017 Julien Jean-Pierre</p>
+			</div>
+		</footer>
+	</body>
+</html>
+<!-- Things I want to fixed
+	- Responsiveness
+	- Padding of the <a> tag in the nav bar is hacked at .84em, make this automatic
+																														- Two div side by side in the content item doesn't work, destroys the webpage
+																														- Let border appear on the left of content item without moving content inside
+	-->
